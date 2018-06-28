@@ -5,10 +5,8 @@ import 'tachyons';
 import { robots } from './robots';
 
 import './index.css';
-import Card from './Card';
 import registerServiceWorker from './registerServiceWorker';
+import CardList from './CardList';
 
-ReactDOM.render(<div>
-    {robots.map(robot => <Card key={robot.id} id={robot.id} name={robot.name} email={robot.email} />)}
-</div>, document.getElementById('root'));
+ReactDOM.render(<CardList robots={robots}/>, document.getElementById('root'));
 registerServiceWorker();

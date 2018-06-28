@@ -10,7 +10,6 @@ class App extends Component {
 
         this.state = {
             robots,
-            searchField: '',
             filteredRobotList: robots
         };
     }
@@ -22,7 +21,6 @@ class App extends Component {
         );
 
         this.setState({
-            searchField: value,
             filteredRobotList: filteredRobots
         });
     };
@@ -31,7 +29,7 @@ class App extends Component {
         return (
             <div className="tc">
                 <h1>RoboFriends</h1>
-                <SearchBox change={this.onSearchChange} value={this.state.searchField} />
+                <SearchBox change={this.onSearchChange} />
                 <CardList robots={this.state.filteredRobotList}/>
             </div>
         );

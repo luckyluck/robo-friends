@@ -9,7 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 import { searchRobots } from './store/searchRobots';
 import { requestRobots } from './store/requestRobots';
 
-import './index.css';
+import './assets/index.css';
 import registerServiceWorker from './registerServiceWorker';
 import App from './containers/App';
 

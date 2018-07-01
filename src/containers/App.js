@@ -14,41 +14,23 @@ class App extends Component {
     }
 
     render() {
-        const searchField = this.props.searchField.toLowerCase();
-        const filteredRobots = this.props.robots.filter(
-            robot => robot.name.toLowerCase().includes(searchField)
+        return (
+            <div className="tc">
+                <h1 className="f1">RoboFriends</h1>
+                <SearchBox change={event => this.props.onSearchChange(event)}/>
+                {/*<Scroll>*/}
+                <ErrorBoundary>
+                    <CardList />
+                </ErrorBoundary>
+                {/*</Scroll>*/}
+            </div>
         );
-
-        if (this.props.robots.length === 0) {
-            return (
-                <h1 className="f1 tc">Loading...</h1>
-            );
-        } else {
-            return (
-                <div className="tc">
-                    <h1 className="f1">RoboFriends</h1>
-                    <SearchBox change={event => this.props.onSearchChange(event)}/>
-                    {/*<Scroll>*/}
-                    <ErrorBoundary>
-                        <CardList robots={filteredRobots}/>
-                    </ErrorBoundary>
-                    {/*</Scroll>*/}
-                </div>
-            );
-        }
     }
 }
-
-const mapStateToProps = state => ({
-    searchField: state.searchRobots.searchField,
-    robots: state.requestRobots.robots,
-    isPending: state.requestRobots.isPending,
-    error: state.requestRobots.error
-});
 
 const mapDispatchToProps = dispatch => ({
     onSearchChange: event => dispatch(setSearchField(event.target.value)),
     onRequestRobots: () => requestRobots(dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

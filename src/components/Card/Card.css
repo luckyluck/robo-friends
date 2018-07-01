@@ -1,0 +1,21 @@
+.Card {
+    width: calc(25% - 16px);
+}
+
+@media (max-width: 1024px) {
+    .Card {
+        width: calc(100% / 3 - 16px);
+    }
+}
+
+@media (max-width: 767px) {
+    .Card {
+        width: calc(100% / 2 - 16px);
+    }
+}
+
+@media (max-width: 500px) {
+    .Card {
+        width: calc(80% - 16px);
+    }
+}

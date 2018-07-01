@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Card from './Card';
+import Card from '../Card/Card';
+
+import './CardList.css';
 
 const CardList = ({ searchField, robots }) => {
     const filteredRobots = robots.filter(
@@ -14,7 +16,7 @@ const CardList = ({ searchField, robots }) => {
         );
     } else {
         return (
-            <div>
+            <div className="CardList">
                 {filteredRobots.map(
                     robot => <Card
                         key={robot.id}

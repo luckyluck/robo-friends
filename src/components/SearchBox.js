@@ -8,6 +8,7 @@ const SearchBox = ({ change }) => {
                 type="search"
                 placeholder="search robots"
                 onChange={change}
+                aria-label="Search robots"
             />
         </div>
     );

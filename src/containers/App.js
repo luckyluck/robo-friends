@@ -2,35 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestRobots, setSearchField } from '../store/actions';
 
-import CardList from '../components/CardList/CardList';
-import SearchBox from '../components/SearchBox';
-import ErrorBoundary from '../components/ErrorBoundary';
-// import Scroll from '../components/Scroll';
-import './App.css';
+import MainPage from '../components/MainPage/MainPage';
 
 class App extends Component {
-    componentDidMount() {
-        this.props.onRequestRobots();
-    }
-
     render() {
-        return (
-            <div className="tc">
-                <h1 className="f1">RoboFriends</h1>
-                <SearchBox change={event => this.props.onSearchChange(event)}/>
-                {/*<Scroll>*/}
-                <ErrorBoundary>
-                    <CardList />
-                </ErrorBoundary>
-                {/*</Scroll>*/}
-            </div>
-        );
+        return <MainPage {...this.props} />;
     }
 }
+
+const mapStateToProps = state => ({
+    searchField: state.searchRobots.searchField,
+    robots: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error
+});
 
 const mapDispatchToProps = dispatch => ({
     onSearchChange: event => dispatch(setSearchField(event.target.value)),
     onRequestRobots: () => requestRobots(dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

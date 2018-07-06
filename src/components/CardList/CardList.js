@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 
 import './CardList.css';
 
-const CardList = ({ searchField, robots }) => {
+export const CardList = ({ searchField, robots }) => {
     const filteredRobots = robots.filter(
         robot => robot.name.toLowerCase().includes(searchField)
     );

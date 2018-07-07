@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import * as actionTypes from './actionTypes';
 
 export const setSearchField = text => ({
@@ -5,11 +7,10 @@ export const setSearchField = text => ({
     payload: text
 });
 
-export const requestRobots = dispatch => {
+export const requestRobots = () => dispatch => {
     dispatch({ type: actionTypes.REQUEST_ROBOTS_PENDING });
 
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
+    axios.get('https://jsonplaceholder.typicode.com/users')
         .then(users => {
             dispatch({
                 type: actionTypes.REQUEST_ROBOTS_SUCCESS,

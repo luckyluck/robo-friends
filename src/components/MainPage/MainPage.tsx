@@ -1,36 +1,35 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import CardList from '../CardList/CardList';
-import SearchBox from '../SearchBox';
 import ErrorBoundary from '../ErrorBoundary';
-// import Scroll from '../Scroll';
+import SearchBox from '../SearchBox';
 
 import './MainPage.css';
 
-class MainPage extends Component {
-    componentDidMount() {
+import { IAppProps } from '../../interfaces/app.interface';
+
+class MainPage extends React.Component<IAppProps, any> {
+    public componentDidMount() {
         this.props.onRequestRobots();
     }
 
-    filterRobots = () => {
+    public filterRobots = () => {
         return this.props.robots.filter(
             robot => robot.name.toLowerCase().includes(this.props.searchField.toLowerCase())
         );
     };
 
-    render() {
+    public render() {
         return (
             <div className="tc">
                 <h1 className="f1">RoboFriends</h1>
-                <SearchBox change={event => this.props.onSearchChange(event)}/>
-                {/*<Scroll>*/}
+                <SearchBox change={this.props.onSearchChange}/>
                 <ErrorBoundary>
                     <CardList
                         robots={this.filterRobots()}
                         isPending={this.props.isPending}
                     />
                 </ErrorBoundary>
-                {/*</Scroll>*/}
             </div>
         );
     }

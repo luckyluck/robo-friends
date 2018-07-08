@@ -3,9 +3,9 @@ import { requestRobots } from './requestRobots';
 
 describe('requestRobots reducer', () => {
     const initialState = {
-        robots: [],
         error: null,
-        isPending: false
+        isPending: false,
+        robots: []
     };
 
     it('should return the initial state', () => {
@@ -14,8 +14,8 @@ describe('requestRobots reducer', () => {
 
     it('should return state if there is no such action', () => {
         expect(requestRobots(initialState, {
-            type: 'UNKNOWN_ACTION',
-            payload: 'Some data'
+            payload: 'Some data',
+            type: 'UNKNOWN_ACTION'
         })).toEqual(initialState);
     });
 
@@ -24,25 +24,25 @@ describe('requestRobots reducer', () => {
             type: actionTypes.REQUEST_ROBOTS_PENDING
         })).toEqual({
             ...initialState,
-            isPending: true,
-            error: null
+            error: null,
+            isPending: true
         });
     });
 
     it('should handle REQUEST_ROBOTS_SUCCESS action', () => {
         const robots = [{
+            email: 'john@gmail.com',
             id: 1,
-            name: 'John',
-            email: 'john@gmail.com'
+            name: 'John'
         }];
 
         expect(requestRobots(initialState, {
-            type: actionTypes.REQUEST_ROBOTS_SUCCESS,
-            payload: robots
+            payload: robots,
+            type: actionTypes.REQUEST_ROBOTS_SUCCESS
         })).toEqual({
             ...initialState,
-            isPending: false,
             error: null,
+            isPending: false,
             robots
         });
     });
@@ -51,12 +51,12 @@ describe('requestRobots reducer', () => {
         const error = 'Some specific error';
 
         expect(requestRobots(initialState, {
-            type: actionTypes.REQUEST_ROBOTS_FAILURE,
-            payload: error
+            payload: error,
+            type: actionTypes.REQUEST_ROBOTS_FAILURE
         })).toEqual({
             ...initialState,
-            isPending: false,
-            error
+            error,
+            isPending: false
         });
     });
 });

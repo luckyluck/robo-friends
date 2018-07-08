@@ -10,15 +10,15 @@ describe('searchRobots reducer', () => {
 
     it('should return state if there is no such action', () => {
         expect(searchRobots(initialState, {
-            type: 'UNKNOWN_ACTION',
-            payload: 'Some data'
+            payload: 'Some data',
+            type: 'UNKNOWN_ACTION'
         })).toEqual(initialState);
     });
 
     it('should hadnle CHANGE_SEARCH_FIELDS action', () => {
         expect(searchRobots(initialState, {
-            type: actionTypes.CHANGE_SEARCH_FIELDS,
-            payload: 'abc'
+            payload: 'abc',
+            type: actionTypes.CHANGE_SEARCH_FIELDS
         })).toEqual({ searchField: 'abc' });
     });
 });

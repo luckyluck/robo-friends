@@ -1,10 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 
 import Card from '../Card/Card';
 
 import './CardList.css';
 
-export const CardList = ({ robots, isPending }) => {
+interface ICardListProps {
+    robots: Array<{
+        id: string,
+        name: string,
+        email: string
+    }>,
+    isPending: boolean
+}
+
+export const CardList = ({ robots, isPending }: ICardListProps) => {
     if (isPending) {
         return (
             <h1 className="f1 tc">Loading...</h1>

@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 
-const SearchBox = ({ change }) => {
+const SearchBox = ({ change }: any) => {
     return (
         <div className="pa2">
             <input

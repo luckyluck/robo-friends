@@ -1,26 +1,27 @@
+import { IAction } from '../interfaces/action.interface';
 import * as actionTypes from './actionTypes';
 
 const initialState = {
-    robots: [],
     error: null,
-    isPending: false
+    isPending: false,
+    robots: []
 };
 
-export const requestRobots = (state = initialState, action = {}) => {
+export const requestRobots = (state = initialState, action = {} as IAction) => {
     switch (action.type) {
         case actionTypes.REQUEST_ROBOTS_PENDING: {
             return {
                 ...state,
+                error: null,
                 isPending: true,
-                error: null
             };
         }
         case actionTypes.REQUEST_ROBOTS_SUCCESS: {
             return {
                 ...state,
-                robots: action.payload,
+                error: null,
                 isPending: false,
-                error: null
+                robots: action.payload
             };
         }
         case actionTypes.REQUEST_ROBOTS_FAILURE: {

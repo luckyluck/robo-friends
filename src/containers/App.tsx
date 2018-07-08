@@ -20,7 +20,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: (param: any) => void) => ({
     onRequestRobots: () => requestRobots(dispatch),
-    onSearchChange: (event: any) => dispatch(setSearchField(event.target.value))
+    onSearchChange: (event: React.SyntheticEvent<HTMLInputElement>) => dispatch(setSearchField(event.currentTarget.value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

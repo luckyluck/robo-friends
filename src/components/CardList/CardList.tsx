@@ -13,7 +13,7 @@ interface ICardListProps {
     isPending: boolean
 }
 
-export const CardList = ({ robots, isPending }: ICardListProps) => {
+export const CardList: React.SFC<ICardListProps> = ({ robots, isPending }) => {
     if (isPending) {
         return (
             <h1 className="f1 tc">Loading...</h1>

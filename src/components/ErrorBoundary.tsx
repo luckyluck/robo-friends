@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-class ErrorBoundary extends React.Component {
+interface IErrorBoundaryState {
+    hasError: boolean
+}
+
+class ErrorBoundary extends React.Component<any, IErrorBoundaryState> {
     public state = {
         hasError: false
     };
